@@ -109,6 +109,7 @@ public class Add_Book extends javax.swing.JFrame {
         });
         getContentPane().add(btnsave, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 703, -1, 40));
 
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/All Page Backgraound.jpg"))); // NOI18N
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1140, 770));
 
