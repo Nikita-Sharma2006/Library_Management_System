@@ -3,6 +3,15 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package library_managment_system;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
 
 /**
  *
@@ -26,21 +35,141 @@ public class Add_Book extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        jLabel1 = new javax.swing.JLabel();
+        txtid = new javax.swing.JTextField();
+        txtname = new javax.swing.JTextField();
+        txtpublisher = new javax.swing.JTextField();
+        txtprice = new javax.swing.JTextField();
+        txtyear = new javax.swing.JTextField();
+        jLabel12 = new javax.swing.JLabel();
+        jLabel13 = new javax.swing.JLabel();
+        jLabel14 = new javax.swing.JLabel();
+        jLabel15 = new javax.swing.JLabel();
+        jLabel16 = new javax.swing.JLabel();
+        btnclose = new javax.swing.JButton();
+        btnsave = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
-        );
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/isue.jpg"))); // NOI18N
+        jLabel1.setText("Add Book Detail");
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 44, 270, 37));
+        getContentPane().add(txtid, new org.netbeans.lib.awtextra.AbsoluteConstraints(413, 172, 411, 55));
+        getContentPane().add(txtname, new org.netbeans.lib.awtextra.AbsoluteConstraints(413, 274, 411, 55));
+        getContentPane().add(txtpublisher, new org.netbeans.lib.awtextra.AbsoluteConstraints(413, 388, 411, 58));
+
+        txtprice.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtpriceActionPerformed(evt);
+            }
+        });
+        getContentPane().add(txtprice, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 500, 411, 55));
+        getContentPane().add(txtyear, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 600, 411, 55));
+
+        jLabel12.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel12.setText("Price");
+        getContentPane().add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 500, 110, 55));
+
+        jLabel13.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel13.setText("Book ID");
+        getContentPane().add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(141, 172, 110, 55));
+
+        jLabel14.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel14.setText("Book Name");
+        getContentPane().add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(141, 274, 110, 55));
+
+        jLabel15.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel15.setText("Publisher Year");
+        getContentPane().add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 610, 150, 55));
+
+        jLabel16.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel16.setText("Publisher");
+        getContentPane().add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(141, 387, 110, 55));
+
+        btnclose.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/close icon.png"))); // NOI18N
+        btnclose.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btncloseActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnclose, new org.netbeans.lib.awtextra.AbsoluteConstraints(1107, 0, -1, -1));
+
+        btnsave.setBackground(new java.awt.Color(51, 204, 0));
+        btnsave.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        btnsave.setForeground(new java.awt.Color(255, 255, 255));
+        btnsave.setText("Save");
+        btnsave.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnsaveActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnsave, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 703, -1, 40));
+
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/All Page Backgraound.jpg"))); // NOI18N
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1140, 770));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void txtpriceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtpriceActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtpriceActionPerformed
+
+    private void btncloseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btncloseActionPerformed
+        dispose();        // TODO add your handling code here:
+    }//GEN-LAST:event_btncloseActionPerformed
+
+    private void btnsaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnsaveActionPerformed
+        if(txtid.getText().equals("")){
+                JOptionPane.showMessageDialog(rootPane, "Please enter Book ID");
+                txtid.requestFocus();
+        }
+        else if(txtname.getText().equals("")){
+                JOptionPane.showMessageDialog(rootPane, "Please enter Book Name");
+                txtname.requestFocus();
+        }
+        else if(txtpublisher.getText().equals("")){
+                JOptionPane.showMessageDialog(rootPane, "Please enter Publisher");
+                txtpublisher.requestFocus();
+        }
+        else if(txtprice.getText().equals("")){
+                JOptionPane.showMessageDialog(rootPane, "Please enter Book Price");
+                txtprice.requestFocus();
+        }
+        else if(txtyear.getText().equals("")){
+                JOptionPane.showMessageDialog(rootPane, "Please enter publisher Year");
+                txtyear.requestFocus();
+        }
+        else{
+        try {
+                Connection con = Connect.getConnection();
+                PreparedStatement pst = con.prepareStatement("INSERT INTO book (id, name, publisher, price, year, status) VALUES (?, ?, ?, ?, ?, ?)");
+
+                pst.setString(1, txtid.getText());
+                pst.setString(2, txtname.getText());
+                pst.setString(3, txtpublisher.getText());
+                pst.setString(4, txtprice.getText());
+                pst.setString(5, txtyear.getText());
+                pst.setString(6, "NotIssued");  // Default status for new books
+
+                pst.executeUpdate();
+                JOptionPane.showMessageDialog(rootPane, "Record Saved", "Saved", JOptionPane.INFORMATION_MESSAGE);
+                txtid.setText("");
+                txtname.setText("");
+                txtpublisher.setText("");
+                txtprice.setText("");
+                txtyear.setText("");
+
+                } catch (SQLException ex) {
+                    Logger.getLogger(Add_Book.class.getName()).log(Level.SEVERE, null, ex);
+}   
+        }
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnsaveActionPerformed
 
     /**
      * @param args the command line arguments
@@ -78,5 +207,19 @@ public class Add_Book extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnclose;
+    private javax.swing.JButton btnsave;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JTextField txtid;
+    private javax.swing.JTextField txtname;
+    private javax.swing.JTextField txtprice;
+    private javax.swing.JTextField txtpublisher;
+    private javax.swing.JTextField txtyear;
     // End of variables declaration//GEN-END:variables
 }
